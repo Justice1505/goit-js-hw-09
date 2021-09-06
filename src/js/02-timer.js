@@ -82,13 +82,13 @@ function stop() {
 }
 
 function updateInterface({ days, hours, minutes, seconds }) {
-  timerOn.daysLeft.textContent = pad(days);
-  timerOn.hoursLeft.textContent = pad(hours);
-  timerOn.minutesLeft.textContent = pad(minutes);
-  timerOn.secondsLeft.textContent = pad(seconds);
+  timerOn.daysLeft.textContent = changes(days);
+  timerOn.hoursLeft.textContent = changes(hours);
+  timerOn.minutesLeft.textContent = changes(minutes);
+  timerOn.secondsLeft.textContent = changes(seconds);
 }
 
-function pad(value) {
+function changes(value) {
   return String(value).padStart(2, '0');
 }
 
