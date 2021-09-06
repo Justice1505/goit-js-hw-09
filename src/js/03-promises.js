@@ -1,18 +1,18 @@
 import { Notify } from 'notiflix';
 
-const refs = {
+const promiseOn = {
   form: document.querySelector('.form'),
   btn: document.querySelector('.js-btn'),
 };
 
 let isActive = false;
 
-refs.btn.addEventListener('click', onBtnClick);
+promiseOn.btn.addEventListener('click', onBtnClick);
 
 function onBtnClick(e) {
   e.preventDefault();
 
-  const { delay, step, amount } = Object.fromEntries(new FormData(refs.form));
+  const { delay, step, amount } = Object.fromEntries(new FormData(promiseOn.form));
 
   if (isActive) {
     return;
