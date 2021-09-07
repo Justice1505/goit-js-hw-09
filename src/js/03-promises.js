@@ -5,8 +5,6 @@ const promiseOn = {
   btn: document.querySelector('.js-btn'),
 };
 
-let isActive = false;
-
 promiseOn.btn.addEventListener('click', onBtnClick);
 
 function onBtnClick(e) {
@@ -14,21 +12,11 @@ function onBtnClick(e) {
 
   const { delay, step, amount } = Object.fromEntries(new FormData(promiseOn.form));
 
-  if (isActive) {
-    return;
-  }
-
-  disableAlerter(delay, step, amount);
-
   for (let i = 0; i < amount; i += 1) {
     createPromise(i, Number(delay) + Number(step) * i)
       .then(onSuccess)
       .catch(onError);
   }
-}
-
-function disableAlerter(delay, step, amount) {
-  setTimeout(() => Number(delay) + Number(step) * amount);
 }
 
 function createPromise(position, delay) {
