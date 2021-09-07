@@ -12,7 +12,7 @@ const timerOn = {
   minutesLeft: document.querySelector('[data-minutes]'),
   secondsLeft: document.querySelector('[data-seconds]'),
 };
-
+timerOn.startBtn.disabled = true;
 let timeSelected;
 let intervalId;
 let isActive = false;
@@ -22,11 +22,14 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onChange() {
-    timerOn.startBtn.removeAttribute('disabled');
-  },
   onClose(selectedDates) {
     timeSelected = Date.parse(selectedDates);
+    if (timeSelected - Date.now() <= 0) {
+      Notify.failure('Please choose a date in the future', { clickToClose: true });
+      return;
+    } else {
+      timerOn.startBtn.disabled = false;
+    }
   },
 };
 
@@ -56,11 +59,6 @@ function start() {
     return;
   }
 
-  if (timeSelected - Date.now() <= 0) {
-    Notify.failure('Please choose a date in the future', { clickToClose: true });
-    return;
-  }
-
   intervalId = setIntervalImmediately(timeUpdate, 1000);
   isActive = true;
 }
@@ -69,7 +67,7 @@ function timeUpdate() {
   const timeLeft = timeSelected - Date.now();
   if (timeLeft < 0) {
     clearInterval(intervalId);
-    isActive = false;
+    // isActive = false;
     return;
   }
   const time = convertMs(timeLeft);
@@ -77,7 +75,7 @@ function timeUpdate() {
 }
 
 function stop() {
-  isActive = false;
+  // isActive = false;
   clearInterval(intervalId);
 }
 

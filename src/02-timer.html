@@ -10,27 +10,28 @@
     <p><a href="index.html">Go back</a></p>
 
     <input type="date" id="date-selector" />
-    <button type="button" data-start>Start</button>
+    <button type="button" data-start disabled>Start</button>
     <button type="button" data-stop>Stop</button>
 
-    <ul class="timer">
-      <li class="field">
+    <div class="timer">
+      <div class="field">
         <span class="value" data-days>00</span>
         <span class="label">Days</span>
-      </li>
-      <li class="field">
+      </div>
+      <div class="field">
         <span class="value" data-hours>00</span>
         <span class="label">Hours</span>
-      </li>
-      <li class="field">
+      </div>
+      <div class="field">
         <span class="value" data-minutes>00</span>
         <span class="label">Minutes</span>
-      </li>
-      <li class="field">
+      </div>
+      <div class="field">
         <span class="value" data-seconds>00</span>
         <span class="label">Seconds</span>
-      </li>
-    </ul>
+      </div>
+    </div>
+
     <script src="js/02-timer.js"></script>
   </body>
 </html>

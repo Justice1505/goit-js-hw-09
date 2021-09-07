@@ -28,8 +28,7 @@ function onBtnClick(e) {
 }
 
 function disableAlerter(delay, step, amount) {
-  isActive = true;
-  setTimeout(() => (isActive = false), Number(delay) + Number(step) * amount);
+  setTimeout(() => Number(delay) + Number(step) * amount);
 }
 
 function createPromise(position, delay) {
